@@ -98,7 +98,8 @@ def main() -> None:
         insert_cursor = connection.cursor()
 
         select_cursor.execute(SELECT_SQL)
-        for codparc, nomeparc, endereco in select_cursor:
+        rows = select_cursor.fetchall()
+        for codparc, nomeparc, endereco in rows:
             total_read += 1
             try:
                 if endereco is None or not str(endereco).strip():
